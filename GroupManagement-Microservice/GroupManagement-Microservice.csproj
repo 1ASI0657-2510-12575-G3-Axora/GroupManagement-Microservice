@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="GroupManagement\" />
+      <Folder Include="GroupManagement\Domain\" />
       <Folder Include="Shared\" />
     </ItemGroup>
 
