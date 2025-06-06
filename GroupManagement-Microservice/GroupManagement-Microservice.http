@@ -1,0 +1,6 @@
+@GroupManagement_Microservice_HostAddress = http://localhost:5155
+
+GET {{GroupManagement_Microservice_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
