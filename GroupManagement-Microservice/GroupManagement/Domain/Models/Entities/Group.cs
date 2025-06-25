@@ -9,7 +9,7 @@ namespace DittoBox.API.GroupManagement.Domain.Models.Entities
 
         public required Location Location { get; set; }
         public int AccountId { get; set; }
-        public FacilityType FacilityType { get; }
+        public FacilityType FacilityType { get; set; }
         public int LocationId { get; set; }
 
         public int ContainerCount { get; set; }

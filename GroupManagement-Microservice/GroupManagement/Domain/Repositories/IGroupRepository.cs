@@ -8,5 +8,7 @@ namespace DittoBox.API.GroupManagement.Domain.Repositories
     {
         public Task<IEnumerable<int>> GetProfileCountByGroupId(int groupId);
         public Task<IEnumerable<int>> GetContainerCountByGroupId(int groupId);
+        Task<IEnumerable<Group>> ListByAccountId(int accountId);
+        Task<Group?> GetByIdWithLocation(int id);
     }
 }
