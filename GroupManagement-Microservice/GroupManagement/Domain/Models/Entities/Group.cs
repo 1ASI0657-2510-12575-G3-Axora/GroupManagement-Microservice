@@ -5,9 +5,9 @@ namespace DittoBox.API.GroupManagement.Domain.Models.Entities
     public class Group
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
-        public Location Location { get; set; }
+        public required Location Location { get; set; }
         public int AccountId { get; set; }
         public FacilityType FacilityType { get; }
         public int LocationId { get; set; }
