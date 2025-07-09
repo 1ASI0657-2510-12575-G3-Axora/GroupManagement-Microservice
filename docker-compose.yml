@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres-group:
+    image: postgres:16
+    container_name: postgres_group_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: axora_group_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_group_data:/var/lib/postgresql/data
+
+  group-management:
+    build:
+      context: .
+      dockerfile: GroupManagement-Microservice/Dockerfile
+    ports:
+      - "8083:8080"
+    environment:
+      - POSTGRES_CONNECTION_STRING=Host=postgres-group;Port=5432;Database=axora_group_db;Username=postgres;Password=12345678
+      - RESET_DATABASE=true
+    depends_on:
+      - postgres-group
+    restart: always
+
+volumes:
+  postgres_group_data:

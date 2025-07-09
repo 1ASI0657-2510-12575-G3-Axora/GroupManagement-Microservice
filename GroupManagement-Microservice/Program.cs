@@ -3,7 +3,9 @@ using DittoBox.API.GroupManagement.Domain.Models.Commands;
 using DittoBox.API.GroupManagement.Domain.Models.Handlers.Internal;
 using DittoBox.API.GroupManagement.Domain.Repositories;
 using DittoBox.API.GroupManagement.Domain.Services.Application;
+using DittoBox.API.GroupManagement.Domain.Services.Application.Implementations;
 using DittoBox.API.GroupManagement.Domain.Services.Domain;
+using DittoBox.API.GroupManagement.Infrastructure.Handlers;
 using DittoBox.API.GroupManagement.Infrastructure.Repositories;
 using DittoBox.API.Shared.Domain.Repositories;
 using DittoBox.API.Shared.Infrastructure;
@@ -83,6 +85,7 @@ namespace DittoBox.API
 
         public static void RegisterHandlers(WebApplicationBuilder builder)
         {
+            builder.Services.AddScoped<IRegisterUserCommandHandler, RegisterUserCommandHandler>();
             /* UserProfile handlers */
             builder.Services.AddCors(options =>
     {
@@ -93,10 +96,13 @@ namespace DittoBox.API
                                             .AllowAnyHeader();
             });
     }); 
+            builder.Services.AddScoped<IGroupService, GroupService>();
 
             /* GroupManagement handlers */
             builder.Services.AddScoped<ICreateGroupCommandHandler, CreateGroupCommandHandler>();
             builder.Services.AddScoped<IGetGroupQueryHandler, GetGroupQueryHandler>();
+
+            builder.Services.AddScoped<IGroupRepository, GroupRepository>();
            
         }
 
